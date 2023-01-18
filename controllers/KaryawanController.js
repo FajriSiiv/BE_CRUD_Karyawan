@@ -24,7 +24,7 @@ export const createKaryawan = async (req, res) => {
     req.body;
 
   const karyawan = new Karyawan({
-    name_karyawan: nama_karyawan,
+    nama_karyawan: nama_karyawan,
     umur: umur,
     join_perusahaan: join_perusahaan,
     gaji: gaji,
