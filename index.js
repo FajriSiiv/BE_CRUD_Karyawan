@@ -5,7 +5,7 @@ import router from "./routes/index.js";
 import dotenv from "dotenv";
 
 const app = express();
-const port = 5000;
+const port = 5000 || process.env.PORT;
 
 dotenv.config();
 
@@ -21,7 +21,7 @@ db.once("open", () => console.log("Database Connected..."));
 
 app.use(
   cors({
-    origin: "*",
+    origin: process.env.BASE_URL,
     optionsSuccessStatus: 200,
     credentials: true,
   })

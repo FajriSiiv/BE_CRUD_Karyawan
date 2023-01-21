@@ -5,6 +5,10 @@ const Karyawan = mongoose.Schema({
     type: String,
     require: true,
   },
+  jabatan: {
+    type: String,
+    require: true,
+  },
   umur: {
     type: Number,
     require: true,
@@ -18,7 +22,7 @@ const Karyawan = mongoose.Schema({
     require: true,
   },
   gender: {
-    type: Boolean,
+    type: String,
     require: true,
   },
   email: {

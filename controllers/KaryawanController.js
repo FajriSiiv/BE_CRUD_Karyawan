@@ -20,8 +20,18 @@ export const getKaryawanById = async (req, res) => {
 };
 
 export const createKaryawan = async (req, res) => {
-  const { nama_karyawan, umur, join_perusahaan, gaji, gender, email } =
+  const { nama_karyawan, umur, join_perusahaan, gaji, gender, email, jabatan } =
     req.body;
+
+  if (
+    !nama_karyawan ||
+    !umur ||
+    !join_perusahaan ||
+    !gaji ||
+    !gender | !email ||
+    !jabatan
+  )
+    return res.status(400).send({ msg: "Lengkapi form tersebut" });
 
   const karyawan = new Karyawan({
     nama_karyawan: nama_karyawan,
@@ -30,6 +40,7 @@ export const createKaryawan = async (req, res) => {
     gaji: gaji,
     gender: gender,
     email: email,
+    jabatan: jabatan,
   });
 
   try {
@@ -52,7 +63,7 @@ export const updateKaryawan = async (req, res) => {
 export const deleteKaryawan = async (req, res) => {
   try {
     const deleteKaryawan = await Karyawan.deleteOne({ _id: req.params.id });
-    res.status(200).json(deleteKaryawan);
+    res.status(204).json(deleteKaryawan);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
